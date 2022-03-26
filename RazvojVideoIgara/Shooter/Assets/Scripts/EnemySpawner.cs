@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemy_prefab;
+    public GameObject enemyPrefab;
     public List<Transform> spawnPoints = new List<Transform>();
     public PlayerMovement player;
     public List<GameObject> Enemies; 
     public int maxEnemyCount;
     private int enemyCount;
+
+    private float timeForSpawn;
     public void Awake() 
     {
         enemyCount = 0;
+        timeForSpawn = 2f;
         Enemies = new List<GameObject>();
     }
     void Start()
     {
-        StartCoroutine(spawnCoroutine());
+        StartCoroutine(spawnCoroutine(timeForSpawn));
     }
 
     void Update()
@@ -25,13 +28,13 @@ public class EnemySpawner : MonoBehaviour
         
     }
 
-    public IEnumerator spawnCoroutine()
+    public IEnumerator spawnCoroutine(float timeForSpawn)
     {
         System.Random random = new System.Random();
         while (true)
         {
             int index = random.Next(0, spawnPoints.Count);
-            GameObject instance = Instantiate(enemy_prefab,spawnPoints[index].position, Quaternion.identity);
+            GameObject instance = Instantiate(enemyPrefab,spawnPoints[index].position, Quaternion.identity);
             Enemies.Add(instance);
             enemyCount++;
             Enemy enemy = instance.GetComponent<Enemy>();
@@ -40,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
             if(enemyCount >= maxEnemyCount)
                 yield break;
 
-            yield return new WaitForSecondsRealtime(2f);
+            yield return new WaitForSecondsRealtime(timeForSpawn);
 
         }
     }
