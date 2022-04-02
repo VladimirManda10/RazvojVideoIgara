@@ -987,6 +987,7 @@ GameObject:
   - component: {fileID: 2708136617939408344}
   - component: {fileID: 2708136617939408347}
   - component: {fileID: 2708136617939408346}
+  - component: {fileID: -8917856988458425015}
   m_Layer: 0
   m_Name: EnemyPrefab
   m_TagString: Untagged
@@ -1067,6 +1068,20 @@ MonoBehaviour:
   player: {fileID: 0}
   navMeshAgent: {fileID: 2708136617939408347}
   moveSpeed: 2
+--- !u!136 &-8917856988458425015
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2708136617939408342}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2708136618107066989
 GameObject:
   m_ObjectHideFlags: 0
